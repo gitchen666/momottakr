@@ -1,0 +1,192 @@
+:root {
+  color-scheme: light;
+  --paper: #f8f7f1;
+  --card: #fffefa;
+  --ink: #172c3e;
+  --secondary: #4b5c67;
+  --accent: #214e76;
+  --soft: #e5ecf1;
+  --line: #d7dcd9;
+  --heading: "Instrument Serif", Georgia, "Noto Serif CJK SC", "Songti SC", SimSun, serif;
+  --body: "DM Sans", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 1rem/1.65 var(--body);
+}
+
+a { color: var(--accent); text-underline-offset: .22em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+
+.skip {
+  position: absolute;
+  z-index: 2;
+  top: .75rem;
+  left: .75rem;
+  padding: .5rem .85rem;
+  transform: translateY(-150%);
+  background: var(--card);
+}
+.skip:focus { transform: none; }
+
+.frame { width: min(68rem, calc(100% - 4rem)); margin-inline: auto; }
+.site-header, .site-footer { border-color: var(--line); border-style: solid; border-width: 0; }
+.site-header { border-bottom-width: 1px; }
+.site-footer { margin-top: auto; border-top-width: 1px; }
+
+.header-inner, .footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+.header-inner { min-height: 5.25rem; }
+.footer-inner { min-height: 5.5rem; font-size: .875rem; }
+
+.brand, .footer-brand {
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  text-decoration: none;
+}
+.brand { display: inline-flex; align-items: center; gap: .75rem; font-size: 1.15rem; }
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 2.125rem;
+  height: 2.125rem;
+  border-radius: .5rem;
+  background: var(--accent);
+}
+.brand-mark::before {
+  width: .85rem;
+  height: .8rem;
+  content: "";
+  background: repeating-linear-gradient(to bottom, #fff 0 2px, transparent 2px 5px);
+}
+
+.primary-nav { display: flex; flex-wrap: wrap; gap: clamp(.8rem, 4vw, 2.6rem); }
+.primary-nav a, .language { display: inline-flex; align-items: center; min-height: 2.75rem; font-size: .875rem; }
+.primary-nav a { color: var(--secondary); text-decoration: none; }
+.primary-nav a[aria-current], .primary-nav a:hover { color: var(--accent); text-decoration: underline; }
+.language { padding-inline: .85rem; border: 1px solid var(--line); border-radius: 2rem; text-decoration: none; }
+.language:hover { background: var(--soft); }
+
+h1, .document-card h2 {
+  margin: 0;
+  font-family: var(--heading);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -.055em;
+}
+:lang(zh) h1, :lang(zh) .document-card h2 { letter-spacing: -.03em; }
+h1 { font-size: clamp(3rem, 8vw, 6rem); }
+
+.home { padding-block: clamp(3.5rem, 11vw, 8rem); }
+.home-intro { position: relative; padding-bottom: clamp(1.5rem, 5vw, 3.5rem); }
+.home-intro::before, .legal-heading::before {
+  display: block;
+  width: 2.5rem;
+  height: .22rem;
+  margin-bottom: 1.6rem;
+  content: "";
+  background: var(--accent);
+}
+.home-intro p { margin: 1.1rem 0 0; color: var(--secondary); font-size: 1.18rem; }
+.document-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.document-card {
+  position: relative;
+  min-height: 15rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--line);
+  border-radius: .7rem;
+  background: var(--card);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color .15s ease, background-color .15s ease;
+}
+.document-card:hover { border-color: var(--accent); background: #f3f7f9; }
+.document-card h2 { margin-top: 1.65rem; font-size: clamp(1.9rem, 4vw, 2.8rem); }
+.document-card p { max-width: 31ch; margin: .75rem 0 0; color: var(--secondary); }
+.paper-icon {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: .45rem;
+  background: var(--soft);
+  color: var(--accent);
+}
+.paper-icon::before {
+  width: .86rem;
+  height: 1.12rem;
+  border: 1.5px solid currentColor;
+  border-radius: 2px;
+  background: repeating-linear-gradient(to bottom, currentColor 0 1px, transparent 1px 4px) center / .4rem .32rem no-repeat;
+  content: "";
+}
+.card-arrow { position: absolute; top: 1.5rem; right: 1.6rem; color: var(--accent); font-size: 1.35rem; }
+
+.legal { padding-block: clamp(2.75rem, 7vw, 5.5rem); }
+.legal-heading { padding-bottom: 2rem; border-bottom: 1px solid var(--line); }
+.legal-heading h1 { font-size: clamp(2.8rem, 7vw, 5.2rem); }
+.effective { margin: .9rem 0 0; color: var(--secondary); font-size: .9rem; font-variant-numeric: tabular-nums; }
+.translation-note { margin: .6rem 0 0; color: var(--secondary); }
+.reading-layout {
+  display: grid;
+  grid-template-columns: minmax(11rem, 1fr) minmax(0, 2.85fr);
+  align-items: start;
+  gap: clamp(1.5rem, 6vw, 5rem);
+  padding-top: 2.5rem;
+}
+.contents { padding-right: 1rem; border-right: 1px solid var(--line); }
+.contents h2 { margin: 0 0 .7rem; font-size: .92rem; }
+.contents ul { display: grid; gap: .2rem; margin: 0; padding: 0; list-style: none; }
+.contents a { display: inline-block; padding-block: .23rem; font-size: .9rem; }
+.legal-text { max-width: 69ch; font-size: 1.05rem; line-height: 1.8; overflow-wrap: anywhere; }
+.legal-text section { margin-top: 2.4rem; }
+.legal-text h2 {
+  margin: 0 0 .65rem;
+  font-family: var(--heading);
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -.025em;
+  scroll-margin-top: 1.25rem;
+}
+.legal-text h2:target { color: var(--accent); text-decoration: underline; text-underline-offset: .18em; }
+.legal-text p { margin: 0 0 1rem; }
+
+@media (max-width: 43rem) {
+  .frame { width: calc(100% - 2.5rem); }
+  .header-inner { display: grid; grid-template-columns: 1fr auto; gap: 0 .75rem; padding-top: .55rem; }
+  .primary-nav { grid-column: 1 / -1; grid-row: 2; column-gap: 1.25rem; }
+  .language { justify-self: end; }
+  .document-grid, .reading-layout { grid-template-columns: 1fr; }
+  .document-card { min-height: 12rem; }
+  .contents { padding: 0 0 1.4rem; border: 0; border-bottom: 1px solid var(--line); }
+  .legal-text { font-size: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .document-card { transition: none; }
+}
+
+@media print {
+  .site-header, .site-footer, .skip, .contents { display: none; }
+  .frame { width: 100%; }
+  .legal { padding: 0; }
+  .reading-layout { display: block; }
+  .legal-text { max-width: none; }
+  .legal-text h2 { break-after: avoid; }
+  body { background: #fff; color: #000; }
+}
